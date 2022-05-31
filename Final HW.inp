@@ -1,0 +1,32 @@
+# Log started 2022-05-30 20:25
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open D:\Desktop\Econometrics\Economics2020\DTP.csv
+summary CARS LENTH ALC DTP --simple
+# model 1
+ols DTP 0 ALC LENTH
+logs DTP
+logs ALC
+logs LENTH
+logs CARS
+# model 2
+ols l_DTP 0 l_CARS l_LENTH l_ALC DEV
+omit 0
+modtest --white
+vif
+bkw
+modtest --squares
+modtest --logs
+# model 4
+ols l_DTP 0 l_ALC DEV
+# model 5
+ols l_DTP 0 l_ALC DEV l_CARS l_LENTH
+# model 6
+ols l_DTP 0 l_CARS l_LENTH
+# model 7
+ols l_DTP 0 l_CARS l_LENTH l_ALC DEV
+reset
+# model 8
+ols l_DTP 0 l_ALC DEV
+# model 9
+ols l_DTP 0 l_CARS l_LENTH
